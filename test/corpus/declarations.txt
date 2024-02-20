@@ -1,0 +1,195 @@
+================================================================================
+Function declarations
+================================================================================
+
+fn foo(count: number): number {
+    return count + 1;
+}
+
+let a = foo(1);
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (function_item
+    (identifier)
+    (parameters
+        (parameter
+        (identifier)
+        (primitive_type)))
+    (primitive_type)
+    (block
+        (expression_statement
+        (return_expression
+            (binary_expression
+            (identifier)
+            (integer_literal))))))
+    (let_declaration
+    (identifier)
+    (call_expression
+        (identifier)
+        (arguments
+        (integer_literal)))))
+
+================================================================================
+Struct
+================================================================================
+
+struct User {
+    name: string,
+    age: number,
+}
+
+let user = User {
+    name: "John",
+    age: 30,
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (struct_item
+    (type_identifier)
+    (field_declaration_list
+        (field_declaration
+        (field_identifier)
+        (primitive_type))
+        (field_declaration
+        (field_identifier)
+        (primitive_type))))
+    (let_declaration
+    (identifier)
+    (struct_expression
+        (type_identifier)
+        (field_initializer_list
+        (field_initializer
+            (field_identifier)
+            (string_literal
+            (string_fragment)))
+        (field_initializer
+            (field_identifier)
+            (integer_literal))))))
+
+================================================================================
+Param declaration
+================================================================================
+
+param {
+    value = 10,
+
+    message = "hello",
+
+    @meta(title = "Limit", range = 50..100)
+    limit = 50,
+
+    @meta(title = "Render style", choices = ["line" = "线", "bar" = "柱"])
+    render_style = "line",
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (meta_item
+    (block
+        (ERROR
+        (assignment_expression
+            (identifier)
+            (integer_literal))
+        (assignment_expression
+            (identifier)
+            (string_literal
+            (string_fragment)))
+        (tuple_expression
+            (assignment_expression
+            (identifier)
+            (string_literal
+                (string_fragment)))
+            (assignment_expression
+            (identifier)
+            (field_expression
+                (integer_literal)
+                (ERROR)
+                (integer_literal))))
+        (assignment_expression
+            (identifier)
+            (integer_literal))
+        (tuple_expression
+            (assignment_expression
+            (identifier)
+            (string_literal
+                (string_fragment)))
+            (assignment_expression
+            (identifier)
+            (array_expression
+                (assignment_expression
+                (string_literal
+                    (string_fragment))
+                (string_literal
+                    (string_fragment)))
+                (assignment_expression
+                (string_literal
+                    (string_fragment))
+                (string_literal
+                    (string_fragment)))))))
+        (assignment_expression
+        (identifier)
+        (string_literal
+            (string_fragment)))
+        (ERROR))))
+
+================================================================================
+Meta declaration
+================================================================================
+
+meta {
+    title = "MACD indicator",
+    description = "MACD is a trend-following indicator that consists of three lines, namely the fast line, the slow line and the bar line."
+    author = "Navi Team"
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (meta_item
+    (block
+        (ERROR
+        (assignment_expression
+            (identifier)
+            (string_literal
+            (string_fragment))))
+        (assignment_expression
+        (assignment_expression
+            (identifier)
+            (string_literal
+            (string_fragment)))
+        (ERROR
+            (identifier))
+        (string_literal
+            (string_fragment))))))
+
+================================================================================
+I18n declaration
+================================================================================
+
+@length {
+    "en" = `Length {n}`,
+    "zh-CN" = `长度 {n}`
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (i18n_item
+    (i18nvariable)
+    (block
+        (ERROR
+        (assignment_expression
+            (string_literal
+            (string_fragment))
+            (string_template
+            (string_fragment))))
+        (assignment_expression
+        (string_literal
+            (string_fragment))
+        (string_template
+            (string_fragment))))))
