@@ -59,3 +59,5 @@ plot(
     key: "MA7",
     hidden: true,
 );
+
+export let ma1 = ma(close, MA1);

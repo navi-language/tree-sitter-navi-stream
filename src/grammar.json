@@ -135,6 +135,10 @@
         {
           "type": "SYMBOL",
           "name": "i18n_item"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "export_item"
         }
       ]
     },
@@ -474,6 +478,10 @@
         {
           "type": "STRING",
           "value": "param"
+        },
+        {
+          "type": "STRING",
+          "value": "export"
         }
       ]
     },
@@ -1570,6 +1578,28 @@
         {
           "type": "SYMBOL",
           "name": "block"
+        }
+      ]
+    },
+    "export_item": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "export"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "let_declaration"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "block"
+            }
+          ]
         }
       ]
     },

@@ -140,6 +140,7 @@
   "while"
   "meta"
   "param"
+  "export"
 ] @keyword
 
 (use_list (self) @keyword)

@@ -142,6 +142,7 @@ module.exports = grammar({
         $.throw_item,
         $.meta_item,
         $.i18n_item,
+        $.export_item,
       ),
 
     // Matches non-delimiter tokens common to both macro invocations and
@@ -200,6 +201,7 @@ module.exports = grammar({
         "while",
         "meta",
         "param",
+        "export",
       ),
 
     // Section - Declarations
@@ -358,6 +360,8 @@ module.exports = grammar({
     meta_item: ($) => seq(choice("meta", "param"), $.block),
 
     i18n_item: ($) => seq($.i18nvariable, $.block),
+
+    export_item: ($) => seq("export", choice($.let_declaration, $.block)),
 
     impl_item: ($) =>
       seq(
