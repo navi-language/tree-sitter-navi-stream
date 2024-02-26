@@ -107,6 +107,7 @@ module.exports = grammar({
     [$._type, $.scoped_identifier, $.scoped_type_identifier],
     [$._type, $.scoped_type_identifier],
     [$.expression_statement, $.switch_case_arm],
+    [$._struct_field_item, $._meta_field_item],
   ],
 
   word: ($) => $.identifier,
@@ -206,7 +207,10 @@ module.exports = grammar({
 
     // Section - Declarations
 
-    attribute_item: ($) => seq("#", "[", $.attribute, "]"),
+    attribute_item: ($) =>
+      choice($._struct_attribute_item, $._meta_attribute_item),
+
+    _struct_attribute_item: ($) => seq("#", "[", $.attribute, "]"),
 
     inner_attribute_item: ($) => seq("#", "!", "[", $.attribute, "]"),
 
@@ -223,6 +227,16 @@ module.exports = grammar({
             field("arguments", alias($.delim_token_tree, $.token_tree)),
           ),
         ),
+      ),
+
+    _meta_attribute_item: ($) => seq("@", $.identifier, $.meta_attribute),
+
+    meta_attribute: ($) =>
+      seq(
+        "(",
+        sepBy(",", seq($.identifier, "=", field("value", $._expression))),
+        optional(","),
+        ")",
       ),
 
     declaration_list: ($) => seq("{", repeat($._declaration_statement), "}"),
@@ -268,17 +282,31 @@ module.exports = grammar({
     field_declaration_list: ($) =>
       seq(
         "{",
-        sepBy(",", seq(repeat($.attribute_item), $.field_declaration)),
+        sepBy(
+          ",",
+          seq(optional(repeat($.attribute_item)), $.field_declaration),
+        ),
         optional(","),
         "}",
       ),
 
-    field_declaration: ($) =>
+    field_declaration: ($) => choice($._struct_field_item, $._meta_field_item),
+
+    _struct_field_item: ($) =>
       seq(
         optional($.visibility_modifier),
         field("name", $._field_identifier),
         ":",
         field("type", $._option_type),
+        optional(seq("=", field("value", $._expression))),
+      ),
+
+    _meta_field_item: ($) =>
+      seq(
+        field("name", choice($.string_literal, $._field_identifier)),
+        optional(seq(":", field("type", $._option_type))),
+        "=",
+        field("value", $._expression),
       ),
 
     ordered_field_declaration_list: ($) =>
@@ -290,6 +318,7 @@ module.exports = grammar({
             repeat($.attribute_item),
             optional($.visibility_modifier),
             field("type", $._option_type),
+            optional(seq("=", field("value", $._expression))),
           ),
         ),
         optional(","),
@@ -303,7 +332,6 @@ module.exports = grammar({
         field("name", $.identifier),
         ":",
         field("type", $._option_type),
-        optional(seq("=", field("value", $._expression))),
         ";",
       ),
 
@@ -357,9 +385,9 @@ module.exports = grammar({
 
     throw_item: ($) => seq("throw", $.expression_statement),
 
-    meta_item: ($) => seq(choice("meta", "param"), $.block),
+    meta_item: ($) => seq(choice("meta", "param"), $.field_declaration_list),
 
-    i18n_item: ($) => seq($.i18nvariable, $.block),
+    i18n_item: ($) => seq($.i18n_key, $.field_declaration_list),
 
     export_item: ($) => seq("export", choice($.let_declaration, $.block)),
 
@@ -1230,7 +1258,7 @@ module.exports = grammar({
       seq(
         choice($._literal_pattern, $._path),
         choice(
-          seq(choice("...", "..="), choice($._literal_pattern, $._path)),
+          seq(choice("..", "..="), choice($._literal_pattern, $._path)),
           "..",
         ),
       ),
@@ -1384,7 +1412,8 @@ module.exports = grammar({
     crate: (_) => "crate",
 
     metavariable: (_) => /\$[a-zA-Z_]\w*/,
-    i18nvariable: (_) => /\@[a-zA-Z_]\w*/,
+
+    i18n_key: (_) => /\@[a-zA-Z_]\w*/,
 
     color_literal: (_) => /#([a-zA-Z0-9]{6,8}|[a-z])/,
   },

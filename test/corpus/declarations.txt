@@ -36,7 +36,7 @@ Struct
 ================================================================================
 
 struct User {
-    name: string,
+    name: string = "",
     age: number,
 }
 
@@ -53,7 +53,8 @@ let user = User {
     (field_declaration_list
         (field_declaration
         (field_identifier)
-        (primitive_type))
+        (primitive_type)
+        (string_literal))
         (field_declaration
         (field_identifier)
         (primitive_type))))
@@ -88,54 +89,52 @@ param {
 
 --------------------------------------------------------------------------------
 
-(source_file
-    (meta_item
-    (block
-        (ERROR
-        (assignment_expression
-            (identifier)
+    (source_file
+      (meta_item
+        (field_declaration_list
+          (field_declaration
+            (field_identifier)
             (integer_literal))
-        (assignment_expression
-            (identifier)
+          (field_declaration
+            (field_identifier)
             (string_literal
-            (string_fragment)))
-        (tuple_expression
-            (assignment_expression
+              (string_fragment)))
+          (attribute_item
             (identifier)
-            (string_literal
-                (string_fragment)))
-            (assignment_expression
-            (identifier)
-            (field_expression
+            (meta_attribute
+              (identifier)
+              (string_literal
+                (string_fragment))
+              (identifier)
+              (field_expression
                 (integer_literal)
                 (ERROR)
                 (integer_literal))))
-        (assignment_expression
-            (identifier)
+          (field_declaration
+            (field_identifier)
             (integer_literal))
-        (tuple_expression
-            (assignment_expression
+          (attribute_item
             (identifier)
-            (string_literal
-                (string_fragment)))
-            (assignment_expression
-            (identifier)
-            (array_expression
+            (meta_attribute
+              (identifier)
+              (string_literal
+                (string_fragment))
+              (identifier)
+              (array_expression
                 (assignment_expression
-                (string_literal
+                  (string_literal
                     (string_fragment))
-                (string_literal
+                  (string_literal
                     (string_fragment)))
                 (assignment_expression
-                (string_literal
+                  (string_literal
                     (string_fragment))
-                (string_literal
-                    (string_fragment)))))))
-        (assignment_expression
-        (identifier)
-        (string_literal
-            (string_fragment)))
-        (ERROR))))
+                  (string_literal
+                    (string_fragment))))))
+          (field_declaration
+            (field_identifier)
+            (string_literal
+              (string_fragment))))))
 
 ================================================================================
 Meta declaration
@@ -143,29 +142,27 @@ Meta declaration
 
 meta {
     title = "MACD indicator",
-    description = "MACD is a trend-following indicator that consists of three lines, namely the fast line, the slow line and the bar line."
+    description = "MACD is a trend-following indicator that consists of three lines, namely the fast line, the slow line and the bar line.",
     author = "Navi Team"
 }
 
 --------------------------------------------------------------------------------
 
-(source_file
-    (meta_item
-    (block
-        (ERROR
-        (assignment_expression
-            (identifier)
+    (source_file
+      (meta_item
+        (field_declaration_list
+          (field_declaration
+            (field_identifier)
             (string_literal
-            (string_fragment))))
-        (assignment_expression
-        (assignment_expression
-            (identifier)
+              (string_fragment)))
+          (field_declaration
+            (field_identifier)
             (string_literal
-            (string_fragment)))
-        (ERROR
-            (identifier))
-        (string_literal
-            (string_fragment))))))
+              (string_fragment)))
+          (field_declaration
+            (field_identifier)
+            (string_literal
+              (string_fragment))))))
 
 ================================================================================
 I18n declaration
@@ -178,18 +175,36 @@ I18n declaration
 
 --------------------------------------------------------------------------------
 
-(source_file
-    (i18n_item
-    (i18nvariable)
-    (block
-        (ERROR
-        (assignment_expression
+    (source_file
+      (i18n_item
+        (field_declaration_list
+          (field_declaration
             (string_literal
-            (string_fragment))
+              (string_fragment))
             (string_template
-            (string_fragment))))
-        (assignment_expression
-        (string_literal
-            (string_fragment))
-        (string_template
-            (string_fragment))))))
+              (string_fragment)))
+          (field_declaration
+            (string_literal
+              (string_fragment))
+            (string_template
+              (string_fragment))))))
+
+================================================================================
+Export let
+================================================================================
+
+export let a = 1;
+export let b = "hello";
+
+--------------------------------------------------------------------------------
+
+    (source_file
+      (export_item
+        (let_declaration
+          (identifier)
+          (integer_literal)))
+      (export_item
+        (let_declaration
+          (identifier)
+          (string_literal
+            (string_fragment)))))

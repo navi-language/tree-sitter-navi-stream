@@ -63,7 +63,7 @@
 (primitive_type) @type.builtin
 (field_identifier) @property
 
-(i18nvariable) @constant
+(i18n_key) @constant
 
 (line_comment) @comment
 (block_comment) @comment

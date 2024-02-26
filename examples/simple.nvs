@@ -10,7 +10,7 @@ meta {
 }
 
 param {
-    @meta(range = 1..250)
+    @meta(range = 1..250, message = "Hello")
     MA1 = 5,
 
     @meta(range = 1..250)
