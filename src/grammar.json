@@ -7269,7 +7269,7 @@
     },
     "i18n_key": {
       "type": "PATTERN",
-      "value": "\\@[a-zA-Z_]\\w*"
+      "value": "@[a-zA-Z_]\\w*"
     },
     "color_literal": {
       "type": "PATTERN",
