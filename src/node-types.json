@@ -446,6 +446,10 @@
         {
           "type": "attribute_item",
           "named": true
+        },
+        {
+          "type": "keyword_argument",
+          "named": true
         }
       ]
     }
@@ -2202,6 +2206,32 @@
     }
   },
   {
+    "type": "keyword_argument",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "label",
     "named": true,
     "fields": {},
@@ -2519,9 +2549,13 @@
     "named": true,
     "fields": {
       "default": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "=",
+            "named": false
+          },
           {
             "type": "_expression",
             "named": true
@@ -3821,6 +3855,11 @@
     }
   },
   {
+    "type": "variadic_parameter",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "visibility_modifier",
     "named": true,
     "fields": {},
@@ -4369,10 +4408,6 @@
   {
     "type": "use",
     "named": false
-  },
-  {
-    "type": "variadic_parameter",
-    "named": true
   },
   {
     "type": "while",

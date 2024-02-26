@@ -43,6 +43,8 @@
     "."
     name: (identifier) @function))
 
+(keyword_argument key: (identifier) @variable.parameter)
+
 (generic_function
   function: (identifier) @function)
 (generic_function

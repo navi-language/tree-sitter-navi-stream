@@ -53,12 +53,7 @@ const TOKEN_TREE_NON_SPECIAL_TOKENS = [
   "~",
 ];
 
-const primitive_types = numeric_types.concat([
-  "bool",
-  "string",
-  "color",
-  "set",
-]);
+const primitive_types = numeric_types.concat(["bool", "string", "set"]);
 
 module.exports = grammar({
   name: "navi_stream",
@@ -550,7 +545,7 @@ module.exports = grammar({
         $.self,
       ),
 
-    variadic_parameter: (_) => "...",
+    variadic_parameter: (_) => "..",
 
     parameter: ($) =>
       seq(
@@ -559,7 +554,7 @@ module.exports = grammar({
         choice(
           seq(
             field("type", $._option_type),
-            optional(seq("=", field("default", $._expression))),
+            field("default", optional(seq("=", $._expression))),
           ),
           seq("..", field("type", $._option_type)),
         ),
@@ -966,10 +961,19 @@ module.exports = grammar({
     arguments: ($) =>
       seq(
         "(",
-        sepBy(",", seq(repeat($.attribute_item), $._expression)),
+        sepBy(
+          ",",
+          seq(
+            repeat($.attribute_item),
+            choice($._expression, $.keyword_argument),
+          ),
+        ),
         optional(","),
         ")",
       ),
+
+    keyword_argument: ($) =>
+      seq(field("key", $.identifier), ":", $._expression),
 
     array_expression: ($) =>
       seq(

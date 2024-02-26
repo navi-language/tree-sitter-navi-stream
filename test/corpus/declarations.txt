@@ -2,34 +2,54 @@
 Function declarations
 ================================================================================
 
-fn foo(count: number): number {
+fn foo(count: number, message: string = 1, infos: ..int): number {
     return count + 1;
 }
 
 let a = foo(1);
+let b = foo(1, message: "Foo", 1, 2);
 
 --------------------------------------------------------------------------------
 
-(source_file
-    (function_item
-    (identifier)
-    (parameters
-        (parameter
+    (source_file
+      (function_item
         (identifier)
-        (primitive_type)))
-    (primitive_type)
-    (block
-        (expression_statement
-        (return_expression
-            (binary_expression
+        (parameters
+          (parameter
             (identifier)
-            (integer_literal))))))
-    (let_declaration
-    (identifier)
-    (call_expression
+            (primitive_type))
+          (parameter
+            (identifier)
+            (primitive_type)
+            (integer_literal))
+          (parameter
+            (identifier)
+            (type_identifier)))
+        (primitive_type)
+        (block
+          (expression_statement
+            (return_expression
+              (binary_expression
+                (identifier)
+                (integer_literal))))))
+      (let_declaration
         (identifier)
-        (arguments
-        (integer_literal)))))
+        (call_expression
+          (identifier)
+          (arguments
+            (integer_literal))))
+      (let_declaration
+        (identifier)
+        (call_expression
+          (identifier)
+          (arguments
+            (integer_literal)
+            (keyword_argument
+              (identifier)
+              (string_literal
+                (string_fragment)))
+            (integer_literal)
+            (integer_literal)))))
 
 ================================================================================
 Struct
@@ -177,6 +197,7 @@ I18n declaration
 
     (source_file
       (i18n_item
+        (i18n_key)
         (field_declaration_list
           (field_declaration
             (string_literal
