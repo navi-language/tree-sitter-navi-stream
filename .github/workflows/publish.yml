@@ -101,3 +101,10 @@ jobs:
           git push origin --delete "v${{ env.current_version }}" || true
           git tag -a "v${{ env.current_version }}" -m "Version ${{ env.current_version }}"
           git push origin "v${{ env.current_version }}"
+
+      - name: Create GitHub Release
+        if: env.version_changed == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.current_version }}
+          release_name: ${{ env.current_version }}
