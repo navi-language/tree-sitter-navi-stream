@@ -109,5 +109,5 @@ jobs:
         if: env.version_changed == 'true'
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ env.current_version }}
-          release_name: ${{ env.current_version }}
+          tag_name: v${{ env.current_version }}
+          release_name: v${{ env.current_version }}
