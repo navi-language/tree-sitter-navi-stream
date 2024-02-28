@@ -1,0 +1,105 @@
+================================================================================
+String Literals
+================================================================================
+
+let c = 'A';
+let str = "Hello, world!";
+let raw_str = r"Hello, world!";
+let str_template = `Hello, world! ${str}`;
+
+--------------------------------------------------------------------------------
+
+    (source_file
+      (let_declaration
+        (identifier)
+        (char_literal))
+      (let_declaration
+        (identifier)
+        (string_literal
+          (string_fragment)))
+      (let_declaration
+        (identifier)
+        (raw_string_literal
+          (string_literal
+            (string_fragment))))
+      (let_declaration
+        (identifier)
+        (string_template
+          (string_fragment)
+          (string_template_substitution
+            (identifier)))))
+
+================================================================================
+Number Literals
+================================================================================
+
+let a = 42;
+let a: number = 18829;
+let b = 1_000_000;
+let c = 3.14159;
+let c: number = 3.14_159;
+let d = 1.0e-10;
+let e = 0xdeadbeef;
+
+--------------------------------------------------------------------------------
+
+    (source_file
+      (let_declaration
+        (identifier)
+        (integer_literal))
+      (let_declaration
+        (identifier)
+        (primitive_type)
+        (integer_literal))
+      (let_declaration
+        (identifier)
+        (integer_literal))
+      (let_declaration
+        (identifier)
+        (float_literal))
+      (let_declaration
+        (identifier)
+        (primitive_type)
+        (float_literal))
+      (let_declaration
+        (identifier)
+        (float_literal))
+      (let_declaration
+        (identifier)
+        (integer_literal)))
+
+================================================================================
+Bool Literals
+================================================================================
+
+let a = true;
+let b = false;
+let c: bool = true;
+
+--------------------------------------------------------------------------------
+
+    (source_file
+      (let_declaration
+        (identifier)
+        (bool_literal))
+      (let_declaration
+        (identifier)
+        (bool_literal))
+      (let_declaration
+        (identifier)
+        (primitive_type)
+        (bool_literal)))
+
+================================================================================
+Nil Literal
+================================================================================
+
+let a: string? = nil;
+
+--------------------------------------------------------------------------------
+
+    (source_file
+      (let_declaration
+        (identifier)
+        (primitive_type)
+        (nil_literal)))

@@ -1,0 +1,30 @@
+================================================================================
+Plot arguments
+================================================================================
+
+plot(ma(close, MA1), title: `${ MA1 }`, color: #ffbb53, key: "MA1");
+
+--------------------------------------------------------------------------------
+
+    (source_file
+      (expression_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (call_expression
+              (identifier)
+              (arguments
+                (identifier)
+                (identifier)))
+            (keyword_argument
+              (identifier)
+              (string_template
+                (string_template_substitution
+                  (identifier))))
+            (keyword_argument
+              (identifier)
+              (color_literal))
+            (keyword_argument
+              (identifier)
+              (string_literal
+                (string_fragment)))))))

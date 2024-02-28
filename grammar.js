@@ -53,7 +53,7 @@ const TOKEN_TREE_NON_SPECIAL_TOKENS = [
   "~",
 ];
 
-const primitive_types = numeric_types.concat(["bool", "string", "set"]);
+const primitive_types = numeric_types.concat(["bool", "string"]);
 
 module.exports = grammar({
   name: "navi_stream",
@@ -63,7 +63,6 @@ module.exports = grammar({
   externals: ($) => [
     $._string_content,
     $._template_chars,
-    $.raw_string_literal,
     $.float_literal,
     $.block_comment,
   ],
@@ -103,6 +102,7 @@ module.exports = grammar({
     [$._type, $.scoped_type_identifier],
     [$.expression_statement, $.switch_case_arm],
     [$._struct_field_item, $._meta_field_item],
+    [$._non_delim_token, $.nil_literal],
   ],
 
   word: ($) => $.identifier,
@@ -1284,10 +1284,11 @@ module.exports = grammar({
         $.string_template,
         $.raw_string_literal,
         $.char_literal,
-        $.boolean_literal,
+        $.bool_literal,
         $.integer_literal,
         $.float_literal,
         $.color_literal,
+        $.nil_literal,
       ),
 
     _literal_pattern: ($) =>
@@ -1296,7 +1297,7 @@ module.exports = grammar({
         $.string_template,
         $.raw_string_literal,
         $.char_literal,
-        $.boolean_literal,
+        $.bool_literal,
         $.integer_literal,
         $.float_literal,
         $.negative_literal,
@@ -1329,6 +1330,8 @@ module.exports = grammar({
 
     unescaped_double_string_fragment: (_) =>
       token.immediate(prec(1, /[^"\\\r\n]+/)),
+
+    raw_string_literal: ($) => seq("r", $.string_literal),
 
     string_template: ($) =>
       seq(
@@ -1383,7 +1386,7 @@ module.exports = grammar({
         ),
       ),
 
-    boolean_literal: (_) => choice("true", "false"),
+    bool_literal: (_) => choice("true", "false"),
 
     comment: ($) => choice($.block_comment, $.line_comment),
 
@@ -1420,6 +1423,8 @@ module.exports = grammar({
     i18n_key: (_) => /@[a-zA-Z_]\w*/,
 
     color_literal: (_) => /#([a-zA-Z0-9]{6,8}|[a-z])/,
+
+    nil_literal: (_) => "nil",
   },
 });
 

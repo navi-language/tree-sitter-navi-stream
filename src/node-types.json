@@ -248,7 +248,7 @@
     "named": true,
     "subtypes": [
       {
-        "type": "boolean_literal",
+        "type": "bool_literal",
         "named": true
       },
       {
@@ -265,6 +265,10 @@
       },
       {
         "type": "integer_literal",
+        "named": true
+      },
+      {
+        "type": "nil_literal",
         "named": true
       },
       {
@@ -286,7 +290,7 @@
     "named": true,
     "subtypes": [
       {
-        "type": "boolean_literal",
+        "type": "bool_literal",
         "named": true
       },
       {
@@ -797,7 +801,7 @@
     }
   },
   {
-    "type": "boolean_literal",
+    "type": "bool_literal",
     "named": true,
     "fields": {}
   },
@@ -2486,6 +2490,11 @@
     }
   },
   {
+    "type": "nil_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "or_pattern",
     "named": true,
     "fields": {},
@@ -2743,6 +2752,21 @@
         },
         {
           "type": "super",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "raw_string_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string_literal",
           "named": true
         }
       ]
@@ -4326,8 +4350,8 @@
     "named": false
   },
   {
-    "type": "raw_string_literal",
-    "named": true
+    "type": "r",
+    "named": false
   },
   {
     "type": "ref",
