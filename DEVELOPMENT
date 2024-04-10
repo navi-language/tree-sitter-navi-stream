@@ -4,7 +4,6 @@
 2. Run `bun run test` to run the tests.
 3. If you have update the grammar, you can write new tests in `test/` and run `bun run test` to see if they pass.
 
-
 ## Preview highlighter
 
 1. Run `bun run dev` to start a web server that will highlight the code in `examples/*.nv`.
