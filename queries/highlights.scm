@@ -156,7 +156,7 @@
     (string_template)
 ] @string
 
-(color_literal) @color
+(color_literal) @constant.color
 
 [
     (integer_literal)
