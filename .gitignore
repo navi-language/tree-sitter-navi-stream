@@ -1,3 +1,4 @@
+*.wasm
 Cargo.lock
 node_modules
 build
