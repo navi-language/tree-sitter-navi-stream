@@ -16,9 +16,9 @@
     "build-wasm": "tree-sitter build-wasm",
     "lint": "eslint grammar.js",
     "parse": "tree-sitter parse",
-    "test": "bun run build && tree-sitter test",
+    "test": "npm run build && tree-sitter test",
     "test-windows": "bun run build && tree-sitter test",
-    "dev": "bun run build && mkdir -p target && tree-sitter highlight --html examples/*.nvs > target/out.html && open target/out.html"
+    "dev": "npm run build && mkdir -p target && tree-sitter highlight examples/*.nvs"
   },
   "tree-sitter": [
     {
