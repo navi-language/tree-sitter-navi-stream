@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-navi-stream",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "navi-stream grammar for tree-sitter",
   "main": "bindings/node",
   "keywords": [
