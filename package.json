@@ -3,13 +3,16 @@
   "version": "0.0.4",
   "description": "navi-stream grammar for tree-sitter",
   "main": "bindings/node",
-  "keywords": ["parsing", "incremental"],
+  "keywords": [
+    "parsing",
+    "incremental"
+  ],
   "dependencies": {
     "nan": "^2.12.1"
   },
   "devDependencies": {
     "node-gyp": ">=7 <11",
-    "tree-sitter-cli": "^0.20.8"
+    "tree-sitter-cli": "^0.25"
   },
   "scripts": {
     "build": "tree-sitter generate",
@@ -24,7 +27,9 @@
     {
       "scope": "source.navi-stream",
       "injection-regex": "navi-stream",
-      "file-types": ["nvs"]
+      "file-types": [
+        "nvs"
+      ]
     }
   ]
 }
