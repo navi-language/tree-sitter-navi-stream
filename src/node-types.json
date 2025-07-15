@@ -1220,36 +1220,6 @@
     }
   },
   {
-    "type": "constrained_type_parameter",
-    "named": true,
-    "fields": {
-      "bounds": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "trait_bounds",
-            "named": true
-          }
-        ]
-      },
-      "left": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "lifetime",
-            "named": true
-          },
-          {
-            "type": "type_identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "continue_expression",
     "named": true,
     "fields": {},
@@ -2002,32 +1972,6 @@
         "types": [
           {
             "type": "type_arguments",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "higher_ranked_trait_bound",
-    "named": true,
-    "fields": {
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_type",
-            "named": true
-          }
-        ]
-      },
-      "type_parameters": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type_parameters",
             "named": true
           }
         ]
@@ -2812,21 +2756,6 @@
     "fields": {}
   },
   {
-    "type": "removed_trait_bound",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "_type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "return_expression",
     "named": true,
     "fields": {},
@@ -3051,6 +2980,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -3389,33 +3319,6 @@
         },
         {
           "type": "token_tree",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "trait_bounds",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "_type",
-          "named": true
-        },
-        {
-          "type": "higher_ranked_trait_bound",
-          "named": true
-        },
-        {
-          "type": "lifetime",
-          "named": true
-        },
-        {
-          "type": "removed_trait_bound",
           "named": true
         }
       ]
@@ -4183,7 +4086,8 @@
   },
   {
     "type": "block_comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "break",
@@ -4227,10 +4131,6 @@
   },
   {
     "type": "do",
-    "named": false
-  },
-  {
-    "type": "dyn",
     "named": false
   },
   {
@@ -4307,7 +4207,8 @@
   },
   {
     "type": "line_comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "loop",
