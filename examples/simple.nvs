@@ -6,27 +6,33 @@ meta {
 
 @hello {
     "en" = "Hello",
-    "zh-CN" = "你好"
+    "zh-CN" = "你好",
 }
 
 param {
     @meta(range = 1..250, message = "Hello")
     MA1 = 5,
 
+
     @meta(range = 1..250)
     MA2 = 10,
+
 
     @meta(range = 1..250)
     MA3 = 20,
 
+
     @meta(range = 1..250)
     MA4 = 30,
+
 
     @meta(range = 1..250)
     MA5 = 60,
 
+
     @meta(range = 1..250)
     MA6 = 120,
+
 
     @meta(range = 1..250)
     MA7 = 250,
@@ -34,30 +40,12 @@ param {
 
 use quote, ta;
 
-plot(ma(close, MA1), title: `${ MA1 }`, color: #ffbb53, key: "MA1");
-plot(ma(close, MA2), title: `${ MA2 }`, color: #4781ff, key: "MA2");
-plot(ma(close, MA3), title: `${ MA3 }`, color: #fc6ebc, key: "MA3");
-plot(ma(close, MA4), title: `${ MA4 }`, color: #95c123, key: "MA4");
-plot(
-    ma(close, MA5),
-    title: `${ MA5 }`,
-    color: #ff477f,
-    key: "MA5",
-    hidden: true,
-);
-plot(
-    ma(close, MA6),
-    title: `${ MA6 }`,
-    color: #28c2ed,
-    key: "MA6",
-    hidden: true,
-);
-plot(
-    ma(close, MA7),
-    title: `${ MA7 }`,
-    color: #d858ff,
-    key: "MA7",
-    hidden: true,
-);
+plot(ma(close, MA1), title: `${MA1}`, color: #red, key: "MA1");
+plot(ma(close, MA2), title: `${MA2}`, color: #4781ff, key: "MA2");
+plot(ma(close, MA3), title: `${MA3}`, color: #fc6ebc, key: "MA3");
+plot(ma(close, MA4), title: `${MA4}`, color: #95c123, key: "MA4");
+plot(ma(close, MA5), title: `${MA5}`, color: #ff477f, key: "MA5", hidden: true);
+plot(ma(close, MA6), title: `${MA6}`, color: #28c2ed, key: "MA6", hidden: true);
+plot(ma(close, MA7), title: `${MA7}`, color: #d858ff, key: "MA7", hidden: true);
 
 export let ma1 = ma(close, MA1);

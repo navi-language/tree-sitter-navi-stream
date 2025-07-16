@@ -5273,7 +5273,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(138);
       END_STATE();
     case 48:
-      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(166);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(171);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(54);
       END_STATE();
@@ -5285,7 +5285,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 50:
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(165);
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(173);
       END_STATE();
     case 51:
       if (('0' <= lookahead && lookahead <= '9') ||
@@ -5495,7 +5495,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 87:
       ACCEPT_TOKEN(anon_sym_POUND);
-      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(166);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(171);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(54);
       END_STATE();
@@ -5842,21 +5842,61 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 164:
       ACCEPT_TOKEN(sym_color_literal);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(164);
+      END_STATE();
+    case 165:
+      ACCEPT_TOKEN(sym_color_literal);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(164);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(163);
+      END_STATE();
+    case 166:
+      ACCEPT_TOKEN(sym_color_literal);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(167);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(50);
+      END_STATE();
+    case 167:
+      ACCEPT_TOKEN(sym_color_literal);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(168);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(173);
+      END_STATE();
+    case 168:
+      ACCEPT_TOKEN(sym_color_literal);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(165);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(172);
+      END_STATE();
+    case 169:
+      ACCEPT_TOKEN(sym_color_literal);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(166);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(51);
+      END_STATE();
+    case 170:
+      ACCEPT_TOKEN(sym_color_literal);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(169);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(52);
+      END_STATE();
+    case 171:
+      ACCEPT_TOKEN(sym_color_literal);
+      if (('a' <= lookahead && lookahead <= 'z')) ADVANCE(170);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z')) ADVANCE(53);
+      END_STATE();
+    case 172:
+      ACCEPT_TOKEN(sym_color_literal);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(163);
       END_STATE();
-    case 165:
+    case 173:
       ACCEPT_TOKEN(sym_color_literal);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(164);
-      END_STATE();
-    case 166:
-      ACCEPT_TOKEN(sym_color_literal);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'Z') ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(53);
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(172);
       END_STATE();
     default:
       return false;
