@@ -7271,7 +7271,7 @@
     },
     "color_literal": {
       "type": "PATTERN",
-      "value": "#([a-zA-Z0-9]{6,8}|[a-z])"
+      "value": "#([a-zA-Z0-9]{6,8}|[a-z]+)"
     },
     "nil_literal": {
       "type": "STRING",

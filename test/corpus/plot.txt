@@ -28,3 +28,25 @@ plot(ma(close, MA1), title: `${ MA1 }`, color: #ffbb53, key: "MA1");
               (identifier)
               (string_literal
                 (string_fragment)))))))
+
+================================================================================
+Plot arguments with named color
+================================================================================
+
+plot(ma(close, MA1), color: #blue);
+
+--------------------------------------------------------------------------------
+
+    (source_file
+      (expression_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (call_expression
+              (identifier)
+              (arguments
+                (identifier)
+                (identifier)))
+            (keyword_argument
+              (identifier)
+              (color_literal))))))

@@ -1422,7 +1422,7 @@ module.exports = grammar({
 
     i18n_key: (_) => /@[a-zA-Z_]\w*/,
 
-    color_literal: (_) => /#([a-zA-Z0-9]{6,8}|[a-z])/,
+    color_literal: (_) => /#([a-zA-Z0-9]{6,8}|[a-z]+)/,
 
     nil_literal: (_) => "nil",
   },
