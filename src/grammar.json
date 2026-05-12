@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "navi_stream",
   "word": "identifier",
   "rules": {
@@ -7367,6 +7366,7 @@
   "inline": [
     "_path",
     "_type_identifier",
+    "ReferenceError",
     "_field_identifier",
     "_non_special_token",
     "_declaration_statement",
@@ -7380,6 +7380,6 @@
     "_literal_pattern",
     "_declaration_statement",
     "_pattern"
-  ],
-  "reserved": {}
+  ]
 }
+
